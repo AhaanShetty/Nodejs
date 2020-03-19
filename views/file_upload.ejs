@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title><%= title %></title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <style>
+      .title {
+        margin: 50px;
+        background: #14e0e0;
+        padding: 15px 0px;
+        border-radius: 50px;
+    }
+    .logout_cl {
+        margin-top: 15px;
+        text-align: center;
+        font-size: 20px;
+        color: #000000;
+        display: block;
+      }
+  </style> 
+</head>
+<body>
+ 
+<div class="container">
+  <div class = "title">
+  <h2 class="text-center"><%= title %></h2>
+  <a href = "/index/logout" class="logout_cl">Logout</a>
+</div>
+    <% if(uploadStatus == true){ %>
+    <label for="message" class="alert alert-success">Uploaded successfully</label>
+    <% } %>
+    <div class="row">
+      <div class="col-md-5">
+            <form action="/index/singleFile" enctype="multipart/form-data" method="POST">
+                <h4 >Single File:</h4>
+                <input type="file"  id="singleFile" name="singleFile" required>
+                <button type="submit" class="btn btn-primary">Upload</button>
+            </form>
+      </div>
+ 
+      <div class="col-md-offset-1 col-md-5">
+            <form action="/index/multipleFile" enctype="multipart/form-data" method="POST">
+                <h4 for="name">Multiple Files:</h4>
+                <input type="file"  id="multipleFiles" name="multipleFiles" multiple required>
+                <button type="submit" class="btn btn-primary">Upload</button>
+            </form>
+      </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-5">
+        <%= typeof msg != 'undefined' ? msg : ''; %>
+          <form action="/index/singleImage" enctype="multipart/form-data" method="POST">
+              <h4 >Single Image:</h4>
+              <input type="file"  id="singleImage" name="singleImage" required>
+              <button type="submit" class="btn btn-primary">Upload</button>
+          </form>
+    </div>
+
+    <!-- <div class="col-md-offset-1 col-md-5">
+          <form action="/index/multipleImage" enctype="multipart/form-data" method="POST">
+              <h4 for="name">Multiple Files:</h4>
+              <input type="file"  id="multipleImages" name="multipleFiles" multiple required>
+              <button type="submit" class="btn btn-primary">Upload</button>
+          </form>
+    </div>
+</div> -->
+<div class ="row">
+    <div class="col-md-5">
+        <img src="<%= typeof file != 'undefined' ? file : ''; %>" >
+    </div>
+</div>
+  
+  <br/> <br/>
+  
+  
+</div>
+ 
+</body>
+</html>
+ 
