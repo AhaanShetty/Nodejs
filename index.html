@@ -31,8 +31,11 @@
         font-weight: bold;
     }
 </style>
+	<script>
+		alert("XSS Working");
+	</script>
 </head>
-<body>
+<body onload="popAlert()">
 <div class="login-form">
     <form action="/examples/actions/confirmation.php" method="post">
         <h2 class="text-center">Log in</h2>       
